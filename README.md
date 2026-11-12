@@ -23,3 +23,10 @@ The trade-off: years and months are calendar-ambiguous in reality. A "month" is 
 The `M` designator is overloaded: before the `T` separator it means months, after `T` it means minutes. The parser tracks which side of `T` each `M` appeared on, so `"P1MT1M"` (1 month + 1 minute) is accepted and carries correctly, while `"P1M2M"` (two month-values on the date side) is rejected as a duplicate.
 
 The `W` (week) designator is also accepted despite being less commonly used, because ISO 8601 explicitly permits it.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
