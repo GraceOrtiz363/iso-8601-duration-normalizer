@@ -1,6 +1,6 @@
 {
   "name": "iso-8601-duration-normalizer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Converts ISO 8601 duration strings into a canonical seconds-only representation.",
   "type": "module",
   "main": "src/index.js",
